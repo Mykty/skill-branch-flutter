@@ -40,7 +40,7 @@ class _LikeButtonState extends State<LikeButton>{
           padding: EdgeInsets.all(8),
           child:Row(
             children: <Widget>[
-              Icon(isLiked ? AppIcons.liked: AppIcons.like_empty),
+              Icon(isLiked ? AppIcons.like_fill: AppIcons.like),
               SizedBox(width: 4.21),
               Text(likeCount.toString()),
             ],

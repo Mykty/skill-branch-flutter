@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:galleryapp/res/colors.dart';
 import 'package:galleryapp/res/res.dart';
+import 'package:galleryapp/screens/photo_screen.dart';
 import 'package:galleryapp/widgets/widgets.dart';
 
 const String kFlutterDash = 'https://blog.codemagic.io/uploads/2020/01/dashmascot.jpg';
@@ -33,20 +34,32 @@ class _FeedState extends State<Feed> {
   }
 
   Widget _buildItem() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Photo(photoLink: kFlutterDash),
-        _buildPhotoMeta(),
-        Padding(padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: Text("Description text",
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: AppStyles.h3.copyWith(color: AppColors.manatee)),
-        )
+    return InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>
+                  FullScreenImage(
+                      userName: 'kaparray',
+                      name: 'Kirill Adeshchenko',
+                      altDescription: 'Beautiful girl in a yellow dress with a flower on her head in the summer in the forest'))
+          );
+    },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Photo(photoLink: kFlutterDash),
+          _buildPhotoMeta(),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Text("Beautiful girl in a yellow dress with a flower on her head in the summer in the forest",
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyles.h3.copyWith(color: AppColors.manatee)),
+          )
 
       ],
-    );
+
+    ));
   }
 
   Widget _buildPhotoMeta(){
@@ -66,7 +79,7 @@ class _FeedState extends State<Feed> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Mykty Baha', style:  AppStyles.h2Black),
+                  Text('Vasya Pupkin', style:  AppStyles.h2Black),
                   Text("bahamykty@gmail.com", style: AppStyles.h5Black.copyWith(color: AppColors.manatee),)
                 ],
               )
